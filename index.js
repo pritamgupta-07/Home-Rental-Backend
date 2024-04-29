@@ -26,9 +26,11 @@ mongoose.connect(process.env.MONGO_URL, {
   dbName: "homeRental",
 }).then(() => {
   console.log("Connected to MongoDB");
-  app.listen(PORT, () => {
-    console.log(`Server running on port: ${PORT}`);
-  });
 }).catch((err) => {
   console.error("Error connecting to MongoDB:", err);
+  process.exit(1);
 });
+
+app.listen(PORT, () => {
+    console.log(`Server running on port: ${PORT}`);
+  });
